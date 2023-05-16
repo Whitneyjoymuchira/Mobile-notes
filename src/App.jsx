@@ -8,13 +8,14 @@ import { Routes,Route } from 'react-router-dom'
 function App() {
  
   return (
-<div className="app">
+<main id="app">
+  {/* classname="app" */}
 <Routes>
   <Route path="/" element={<Notes />} />
   <Route path="/create-note" element={<CreateNotes />} />
   <Route path="/edit-note/:id" element={<EditNotes />} />
 </Routes>
-</div>
+</main>
   )
 }
 
