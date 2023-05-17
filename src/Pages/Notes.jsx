@@ -27,7 +27,7 @@ return note
             autoFocus
             placeholder="Keyword..."
             onChange={(e) => {
-              setText(e.target.value);
+              setText(e.target.value) ;handleSearch();
             }}
           />
         )}
@@ -38,7 +38,7 @@ return note
             setShowSearch(!showSearch);
           }}
         >
-          <CiSearch  onClick={handleSearch}/>
+          <CiSearch  />
         </button>
       </header>
       <div className="notes__container">
