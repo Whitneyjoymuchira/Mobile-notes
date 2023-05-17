@@ -5,31 +5,29 @@ import { IoIosArrowBack } from "react-icons/io";
 import { v4 as uuid } from "uuid";
 import UseCreateTime from "../Components/UseCreateTime";
 
-
-const CreateNotes = ({setNotes,notes}) => {
+const CreateNotes = ({ setNotes, notes }) => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
-  const date=UseCreateTime()
-  const Navigate=useNavigate()
-  
+  const date = UseCreateTime();
+  const Navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && details) {
-      const note={
+      const note = {
         id: uuid(),
         title: title,
         details: details,
-        date:date
+        date: date,
       };
       console.log(note);
-       //add notes to notes array
-       setNotes([note,...notes ]);
-       //new method
+      //add notes to notes array
+      setNotes([note, ...notes]);
+      //new method
       // setNotes(prevNotes=>([note,...prevNotes]))
     }
     //redirect to homepage-useNavigation
-    Navigate('/')
+    Navigate("/");
   };
   return (
     <section>
@@ -61,8 +59,8 @@ const CreateNotes = ({setNotes,notes}) => {
         ></textarea>
       </form>
     </section>
-   
   );
-};
+  
+}
 
 export default CreateNotes;
