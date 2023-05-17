@@ -1,42 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import Notes from "./Notes";
-import { Link } from "react-router-dom";
-import {IoIosArrowBack} from 'react-icons/io'
-
-const CreateNotes = ({ note, setNote, noteList, setNoteList }) => {
-  return(
-<section>
-<header className="create-note__header">
-  <Link className="btn" link to ="/">
-  <IoIosArrowBack/>
-  </Link>
-  <button className="btn lg primary">Save</button>
-</header>
-<form className="create-note__form">
-<input type="text" autoFocus placeholder="Title" />
-<textarea placeholder="Note Details" rows="30"></textarea>
-</form>
-</section>
-  ) 
-//   const handleChange = (event) => {
-//     setNote(event.target.value);
-//   };
-//   console.log(note);
-
-//   const addToList=(e)=>{
-//     e.preventDefault()
-//     setNoteList([...noteList, note]);
-//         setNote("");
-//   }
-//   return (
-//     <form className="create-note__form">
-//       <input type="text" onChange={handleChange} />
-//       <button className="btn" onClick={addToList}>+</button>
-// {noteList}
-//     </form>
+import { Link, useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
+import { v4 as uuid } from "uuid";
+import UseCreateTime from "../Components/UseCreateTime";
 
 
-  ;
+const CreateNotes = ({setNotes,notes}) => {
+  const [title, setTitle] = useState("");
+  const [details, setDetails] = useState("");
+  const date=UseCreateTime()
+  const Navigate=useNavigate()
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && details) {
+      const note={
+        id: uuid(),
+        title: title,
+        details: details,
+        date:date
+      };
+      console.log(note);
+       //add notes to notes array
+       setNotes([note,...notes ]);
+       //new method
+      // setNotes(prevNotes=>([note,...prevNotes]))
+    }
+    //redirect to homepage-useNavigation
+    Navigate('/')
+  };
+  return (
+    <section>
+      <header className="create-note__header">
+        <Link className="btn" link to="/">
+          <IoIosArrowBack />
+        </Link>
+        <button className="btn lg primary" onClick={handleSubmit}>
+          Save
+        </button>
+      </header>
+      <form className="create-note__form">
+        <input
+          type="text"
+          autoFocus
+          placeholder="Title"
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+          value={title}
+        />
+        <textarea
+          placeholder="Note Details"
+          rows="30"
+          onChange={(e) => {
+            setDetails(e.target.value);
+          }}
+          value={details}
+        ></textarea>
+      </form>
+    </section>
+   
+  );
 };
 
 export default CreateNotes;

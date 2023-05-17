@@ -5,7 +5,7 @@ import {BsPlusLg} from 'react-icons/bs'
 import NoteItem from "../Components/NoteItem";
 import { Link } from "react-router-dom";
 import CreateNotes from "./CreateNotes";
-export const Notes = () => {
+export const Notes = ({notes}) => {
   return (
   <section>
 <header className="notes__header">
@@ -14,7 +14,7 @@ export const Notes = () => {
   <button className="btn"><CiSearch /></button>
 </header>
 <div className="notes__container">
- {Dummy_notes.map((note)=>(
+ {notes.map((note)=>(
 <NoteItem key={note.id}  title={note.title} note={note} details={note.details}  date={note.date}/>
  ))}
 </div>
