@@ -11,7 +11,8 @@ export const Notes = ({notes}) => {
 <header className="notes__header">
    <h2>My Notes</h2>
    {/* <input type="text"  autoFocus placeholder="Keyword..." /> */}
-  <button className="btn"><CiSearch /></button>
+  <button className="btn"><CiSearch />
+  </button>
 </header>
 <div className="notes__container">
  {notes.map((note)=>(
