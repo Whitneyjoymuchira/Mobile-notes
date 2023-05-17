@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Notes notes={notes} />} />
         <Route path="/create-note" element={<CreateNotes setNotes={setNotes} notes={notes} />} />
-        <Route path="/edit-note/:id" element={<EditNotes />} />
+        <Route path="/edit-note/:id" element={<EditNotes setNotes={setNotes} notes={notes} />} />
       </Routes>
     </main>
   );
