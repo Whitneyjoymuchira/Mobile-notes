@@ -35,6 +35,12 @@ const EditNotes = ({ setNotes, notes }) => {
     //navigate
     Navigate("/");
   };
+  const handleDelete=(e)=>{
+    e.preventDefault()
+    const newNotes = notes.filter((note) => note.id!== id);
+    setNotes(newNotes);
+    Navigate("/");
+  }
   return (
     <section>
       <header className="create-note__header">
@@ -44,7 +50,7 @@ const EditNotes = ({ setNotes, notes }) => {
         <button className="btn lg primary" onClick={handleForm}>
           Save
         </button>
-        <button className="btn danger">
+        <button className="btn danger" onClick={handleDelete}>
           <RiDeleteBin6Line />
         </button>
       </header>
